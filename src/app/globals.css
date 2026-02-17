@@ -1,26 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: #F7F6F3;
+  --color-foreground: #111111;
+  --color-accent: #8B0000;
+  --color-muted: #D6D3CE;
+
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  /* Custom Spacing Scale: Matches requested 8, 16, 24, 40, 64 */
+  --spacing-p1: 8px;
+  /* 8px */
+  --spacing-p2: 16px;
+  /* 16px */
+  --spacing-p3: 24px;
+  /* 24px */
+  --spacing-p4: 40px;
+  /* 40px */
+  --spacing-p5: 64px;
+  /* 64px */
 }
 
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #F7F6F3;
+    --foreground: #111111;
+    --accent: #8B0000;
+    --muted: #D6D3CE;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-serif);
+    letter-spacing: 0.5px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .container-custom {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--spacing-p2);
+    padding-right: var(--spacing-p2);
+  }
+
+  .btn-primary {
+    background-color: var(--accent);
+    color: #F7F6F3;
+    padding: var(--spacing-p1) var(--spacing-p2);
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    font-weight: 600;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+  }
 }
